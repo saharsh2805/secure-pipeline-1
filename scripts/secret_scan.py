@@ -5,7 +5,7 @@ IGNORE = {".env.example", "secret_scan.py"}
 
 failed = False
 for p in pathlib.Path(".").rglob("*"):
-    if p.is_file() and ".git" not in p.parts and p.name not in IGNORE:
+    if p.is_file() and ".git" not in p.parts and ".venv" not in p.parts and p.name not in IGNORE:
         text = p.read_text(errors="ignore")
         for pat in PATTERNS:
             if re.search(pat, text):
